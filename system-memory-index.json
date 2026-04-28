@@ -1,0 +1,149 @@
+{
+  "version": "5.0",
+  "last_updated": "2026-04-28T20:45:00Z",
+  "source_key": "LLMX-MASTER-20260427",
+
+  "mcp_server": {
+    "name": "MythoNexus Master MCP Server",
+    "root": "~/.ai-memory/mcp-server",
+    "config": "~/.ai-memory/mcp-server/config.json",
+    "description": "Central hub for all MCP dependencies, drivers, hosts, proxies, and software"
+  },
+
+  "platforms": {
+    "windows": {
+      "name": "Windows",
+      "memory": "%USERPROFILE%\\.ai-memory",
+      "git_bash": "/c/Users/AzielMelek/.ai-memory",
+      "path_sep": "\\",
+      "shells": ["powershell", "cmd", "pwsh", "git_bash"]
+    },
+    "wsl": {
+      "name": "WSL",
+      "memory": "/mnt/c/Users/AzielMelek/.ai-memory",
+      "path_sep": "/",
+      "shells": ["bash", "zsh", "fish"]
+    },
+    "linux": {
+      "name": "Linux",
+      "memory": "$HOME/.ai-memory",
+      "path_sep": "/",
+      "shells": ["bash", "zsh", "fish"]
+    },
+    "macos": {
+      "name": "macOS",
+      "memory": "$HOME/.ai-memory",
+      "path_sep": "/",
+      "shells": ["bash", "zsh", "fish"]
+    },
+    "web": {
+      "name": "Web",
+      "memory": "/tmp/.ai-memory",
+      "path_sep": "/",
+      "constraints": {"ephemeral": true}
+    },
+    "mobile": {
+      "name": "Mobile",
+      "memory": "$HOME/Library/Application Support/.ai-memory",
+      "path_sep": "/",
+      "platforms": ["ios", "ipad", "android"]
+    }
+  },
+
+  "repositories": {
+    "count": 12,
+    "paths_file": "~/.ai-memory/projects.json",
+    "details_dir": "~/.ai-memory/repos",
+    "project_index": "~/.ai-memory/mgtechgroup-projects.md"
+  },
+
+  "services": {
+    "ollama": {"host": "127.0.0.1", "port": 11434, "url": "http://localhost:11434", "status": "running"},
+    "loki": {"host": "127.0.0.1", "port": 3100, "url": "http://localhost:3100", "status": "running"},
+    "grafana": {"host": "127.0.0.1", "port": 3000, "url": "http://localhost:3000", "status": "running"},
+    "prometheus": {"host": "127.0.0.1", "port": 9090, "url": "http://localhost:9090", "status": "running"},
+    "portainer": {"host": "127.0.0.1", "port": 9000, "url": "http://localhost:9000", "status": "running"},
+    "chromadb": {"host": "127.0.0.1", "port": 8000, "url": "http://localhost:8000", "status": "running"},
+    "docker": {"host": "127.0.0.1", "port": 2375, "context": "desktop-linux", "status": "running"},
+    "nats": {"host": "127.0.0.1", "port": 4222, "url": "nats://localhost:4222", "status": "available"},
+    "nats_monitoring": {"host": "127.0.0.1", "port": 8222, "url": "http://localhost:8222", "status": "available"},
+    "tnas": {"host": "192.168.1.199", "port": 5443, "url": "https://tnas-mgxvs7.local:5443", "status": "available", "user": "sdmgxvsaieu"},
+    "tnas_http": {"host": "192.168.1.199", "port": 5180, "url": "http://tnas-mgxvs7.local:5180", "status": "available"},
+    "cloudflare": {"account_id": "e6b50af22974f6af628eeddbdc170840", "url": "https://dash.cloudflare.com", "api_url": "https://api.cloudflare.com/client/v4", "status": "available", "services": ["dns", "cdn", "waf", "workers", "r2", "pages"]}
+  },
+
+  "session_encryption": {
+    "all_chats_encrypted": true,
+    "sync_across_devices": true,
+    "sync_via": ["tnas", "cloudflare-r2"],
+    "privacy_policy": "secrets-vault/access/session-privacy.json"
+  },
+
+  "credentials": {
+    "tnas_admin": {
+      "username": "sdmgxvsaieu",
+      "env_var": "TNAS_ADMIN_PASSWORD",
+      "role": "admin",
+      "note": "Full admin access"
+    },
+    "tnas_worker": {
+      "username": "aidevagentworker",
+      "env_var": "TNAS_WORKER_PASSWORD",
+      "role": "worker",
+      "note": "Agent/worker account for non-admin access"
+    }
+  },
+
+  "dependencies": {
+    "python": {"version": "3.13", "path": "C:\\Program Files\\Python313"},
+    "nodejs": {"version": "20.x", "path": "C:\\Program Files\\nodejs"},
+    "git": {"version": "2.40+", "path": "C:\\Program Files\\Git"},
+    "docker": {"version": "29.4.0", "context": "desktop-linux"},
+    "ollama": {"version": "0.21.0", "port": 11434},
+    "chocolatey": {"version": "2.0+", "path": "C:\\ProgramData\\chocolatey"},
+    "winget": {"version": "1.0+", "path": "C:\\Users\\AzielMelek\\AppData\\Local\\Microsoft\\WindowsApps"}
+  },
+
+  "drivers": {
+    "filesystem": {"type": "native"},
+    "network": {"type": "native", "protocols": ["http", "https", "tcp", "udp"]},
+    "shell": {"type": "native", "shells": ["powershell", "cmd", "bash", "zsh"]},
+    "database": {"type": "embedded", "engines": ["sqlite", "chroma"]},
+    "git": {"type": "vcs"},
+    "container": {"type": "runtime", "engine": "docker"}
+  },
+
+  "proxies": {
+    "http": {"enabled": false},
+    "https": {"enabled": false},
+    "socks5": {"enabled": false}
+  },
+
+  "trigger_phrases": [
+    "system scan for core ai memory",
+    "core memory scan",
+    "ai memory status",
+    "ai status",
+    "memory check",
+    "initialize master",
+    "load master prompt",
+    "root setup",
+    "superuser mode"
+  ],
+
+  "env_vars": {
+    "memory": ["AI_MEMORY_PATH", "CLAUDE_MEMORY_PATH", "MEMORY_CACHE_PATH"],
+    "ollama": ["OLLAMA_HOST", "OLLAMA_URL"],
+    "docker": ["DOCKER_CONTEXT"]
+  },
+
+  "system_status": {
+    "os": "Windows 11 Pro",
+    "shell": "Git Bash / PowerShell",
+    "primary_model": "claude-sonnet-4",
+    "backup_model": "qwen2.5-coder:7b",
+    "current_model": "minimax-m2.7",
+    "ollama": "running on port 11434",
+    "docker": "desktop-linux"
+  }
+}
